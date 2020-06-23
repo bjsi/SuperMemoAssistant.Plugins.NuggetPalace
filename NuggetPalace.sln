@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution files", "_Solution files", "{DEA7868A-33AC-4EC7-B161-E642D461F7A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{EB21384F-73B4-424C-B895-A7D147C45C8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemoAssistant.Plugins.NuggetPalace", "src\SuperMemoAssistant.Plugins.NuggetPalace\SuperMemoAssistant.Plugins.NuggetPalace.csproj", "{3387F6E1-6670-4E63-AA9E-8692BD8E160D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4982EC0C-64FC-4621-8EA7-C2BDA47BA864}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMemoAssistant.Plugins.NuggetPalace.Tests", "src\SuperMemoAssistant.Plugins.NuggetPalace.Tests\SuperMemoAssistant.Plugins.NuggetPalace.Tests.csproj", "{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		1. Alpha (Debug)|Any CPU = 1. Alpha (Debug)|Any CPU
+		2. Beta (Release)|Any CPU = 2. Beta (Release)|Any CPU
+		3. Stable (Release)|Any CPU = 3. Stable (Release)|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D}.1. Alpha (Debug)|Any CPU.ActiveCfg = Debug|Any CPU
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D}.1. Alpha (Debug)|Any CPU.Build.0 = Debug|Any CPU
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D}.2. Beta (Release)|Any CPU.ActiveCfg = Release|Any CPU
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D}.2. Beta (Release)|Any CPU.Build.0 = Release|Any CPU
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D}.3. Stable (Release)|Any CPU.ActiveCfg = Release|Any CPU
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D}.3. Stable (Release)|Any CPU.Build.0 = Release|Any CPU
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}.1. Alpha (Debug)|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}.1. Alpha (Debug)|Any CPU.Build.0 = Debug|Any CPU
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}.2. Beta (Release)|Any CPU.ActiveCfg = Release|Any CPU
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}.2. Beta (Release)|Any CPU.Build.0 = Release|Any CPU
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}.3. Stable (Release)|Any CPU.ActiveCfg = Release|Any CPU
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}.3. Stable (Release)|Any CPU.Build.0 = Release|Any CPU
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3387F6E1-6670-4E63-AA9E-8692BD8E160D} = {EB21384F-73B4-424C-B895-A7D147C45C8F}
+		{D6B49ABC-E70B-4EF7-B9D9-F04E583D2F6E} = {4982EC0C-64FC-4621-8EA7-C2BDA47BA864}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {604D59D0-467C-491C-B1AE-8B527DCEFC1E}
+	EndGlobalSection
+EndGlobal
