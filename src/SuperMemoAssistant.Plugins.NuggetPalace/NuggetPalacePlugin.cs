@@ -69,8 +69,6 @@ namespace SuperMemoAssistant.Plugins.NuggetPalace
     public NuggetPalaceService service = new NuggetPalaceService();
     public bool WdwOpen { get; set; }
 
-
-
     #endregion
 
     private void LoadConfig()
@@ -103,44 +101,41 @@ namespace SuperMemoAssistant.Plugins.NuggetPalace
         return;
 
       string content = GetCurrentElementContent();
-      string link = ParseLink(content);
-      if (string.IsNullOrEmpty(link))
+      int elementId = Svc.SM.UI.ElementWdw.CurrentElementId;
+      OpenNuggetPalaceWdw(content, elementId);
+
+    }
+
+    private void OpenNuggetPalaceWdw(string content, int elementId)
+    {
+
+      if (string.IsNullOrEmpty(content) || elementId < 0)
         return;
 
-      OpenNuggetPalaceWdw(link);
-
-    }
-
-    private void OpenNuggetPalaceWdw(string url)
-    {
       Application.Current.Dispatcher.Invoke(() =>
       {
-        var wdw = new NuggetPalaceWdw(url);
+        var wdw = new NuggetPalaceWdw(content, elementId);
         wdw.ShowAndActivate();
       });
-    }
 
-    private string ParseLink(string content)
-    {
-      if (string.IsNullOrEmpty(content))
-        return null;
-      string refString = ReferenceHelpers.ParseReferences(content);
-      ElementReferences refs = ReferenceHelpers.CreateReferences(refString);
-      return refs.Link;
     }
 
     private string GetCurrentElementContent()
     {
+
       var ctrlGroup = Svc.SM.UI.ElementWdw.ControlGroup;
       var htmlCtrl = ctrlGroup?.GetFirstHtmlControl()?.AsHtml();
       return htmlCtrl?.Text;
+
     }
 
 
      /// <inheritdoc />
     public override void ShowSettings()
     {
+
       ConfigurationWindow.ShowAndActivate(HotKeyManager.Instance, Config);
+
     }
 
     #endregion

@@ -4,19 +4,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SuperMemoAssistant.Plugins.NuggetPalace.UI"
+        xmlns:data1="clr-namespace:SuperMemoAssistant.Sys.Windows.Data;assembly=SuperMemoAssistant.Interop"
         mc:Ignorable="d"
-        Title="Confirm Nugget?" Height="250" Width="300">
+        Title="Confirm Nugget?" Height="700" Width="400">
     <Grid>
     <Grid.RowDefinitions>
-      <RowDefinition></RowDefinition>
-      <RowDefinition></RowDefinition>
-      <RowDefinition></RowDefinition>
+      <RowDefinition Height="60"></RowDefinition>
+      <RowDefinition Height="40"></RowDefinition>
+      <RowDefinition Height="40"></RowDefinition>
+      <RowDefinition Height="80"></RowDefinition>
+      <RowDefinition Height="*"></RowDefinition>
       <RowDefinition Height="30"/>
     </Grid.RowDefinitions>
       
       <!-- Title -->
     <DockPanel Grid.Row="0">
       <TextBlock Text="Title:"
+                 TextWrapping="Wrap"
+                 FontWeight="Bold"
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
                  Margin="5"/>
@@ -28,10 +33,25 @@
 
     </DockPanel>
       
+    <!-- Author -->
+    <DockPanel Grid.Row="1">
+      <TextBlock Text="Author:"
+                 FontWeight="Bold"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Margin="5"/>
+
+      <TextBox Text="{Binding Author, Mode=TwoWay}"
+               Margin="5"
+               TabIndex="0"
+               VerticalAlignment="Center"/>
+
+    </DockPanel>
 
       <!-- Link -->
-    <DockPanel Grid.Row="1">
+    <DockPanel Grid.Row="2">
       <TextBlock Text="Link:"
+                 FontWeight="Bold"
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center"
                  Margin="5"/>
@@ -44,22 +64,97 @@
     </DockPanel>
 
       <!-- Text -->
-    <DockPanel Grid.Row="2">
-      <TextBlock Text="Text:"
-                 HorizontalAlignment="Center"
+    <StackPanel Grid.Row="3">
+      <TextBlock Text="Optional Comment:"
+                 FontWeight="Bold"
                  VerticalAlignment="Center"
                  Margin="5"/>
 
-      <TextBox Text="{Binding Text, Mode=TwoWay}"
-               TabIndex="2"
-               Margin="5"
-               AcceptsReturn="True"
-               Height="40"
-               TextWrapping="Wrap"
-               VerticalAlignment="Center"></TextBox>
-    </DockPanel>
+      <ScrollViewer Margin="5">
+        <TextBox Text="{Binding Text, Mode=TwoWay}"
+                 TabIndex="2"
+                 AcceptsReturn="True"
+                 Height="40"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Center">
+        </TextBox>
+      </ScrollViewer>
+    </StackPanel>
+    
+    <!-- Item Picker TreeView -->
+    <StackPanel Orientation="Vertical"
+                Grid.Row="4">
+      <TextBlock Text="Optionally include items:"
+                 FontWeight="Bold"
+                 VerticalAlignment="Center"
+                 Margin="5"/>
+      <TextBlock Text="Selected Tree Element Preview:"
+                 Margin="5"/>
+
+      <!-- Question and Answer Previewer -->
+      <DockPanel>
+        <!-- Question Previewer -->
+        <TextBlock Text="Question:"
+                   Margin="5">
+        </TextBlock>
+        <ScrollViewer Height="40"
+                      Margin="5">
+          <TextBlock TextWrapping="Wrap"
+                     Name="QuestionBox"/>
+        </ScrollViewer>
+      </DockPanel>
       
-    <Grid Grid.Row="3">
+      <!-- Answer Previewer -->
+      <DockPanel>
+        <TextBlock Text="Answer:"
+                   Margin="5">
+        </TextBlock>
+        <ScrollViewer Height="40"
+                      Margin="5">
+          <TextBlock TextWrapping="Wrap"
+                     Name="AnswerBox"/>
+        </ScrollViewer>
+      </DockPanel>
+      
+      <!-- Item Picker Tree View -->
+      <TreeView ItemsSource="{Binding RootElement}"
+                Name="TvElements"
+                Grid.Row="5"
+                Margin="5"
+                SelectedItemChanged="TvElements_SelectedItemChanged">
+        <TreeView.Resources>
+          <data1:ElementIconConverter x:Key="ElementIconConverter"/>
+          <local:CheckboxForItemsOnly x:Key="CheckboxForItemsOnly"/>
+          <local:ShorterTitle x:Key="ShorterTitle"/>
+        </TreeView.Resources>
+        <TreeView.ItemTemplate>
+          <HierarchicalDataTemplate ItemsSource="{Binding Children}"
+                                    DataType="types:IElement">
+            <StackPanel Orientation="Horizontal">
+              <CheckBox Margin="0 0 4 0"
+                        VerticalAlignment="Center"
+                        Tag="{Binding}"
+                        Checked="CheckBox_Checked"
+                        Unchecked="CheckBox_Unchecked"
+                        Visibility="{Binding Converter={StaticResource CheckboxForItemsOnly}, FallbackValue=Hidden}"/>
+              
+              <Image Width="16"
+                   Height="16"
+                   Margin="0 0 4 0"
+                   VerticalAlignment="Center"
+                   Source="{Binding Converter={StaticResource ElementIconConverter}, Path=Type}" />
+
+              <TextBlock Text="{Binding Converter={StaticResource ShorterTitle}}"
+                       FontSize="13"
+                       Margin="1 2 0 2" />
+            </StackPanel>
+          </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+        
+      </TreeView>
+    </StackPanel>
+      
+    <Grid Grid.Row="5">
       <Button Name="CloseBtn" 
               Content=" CLOSE "
               TabIndex="4"
@@ -73,6 +168,5 @@
               Margin="5"
               HorizontalAlignment="Right" Click="SendBtn_Click"/>
     </Grid>
-
   </Grid>
 </Window>
